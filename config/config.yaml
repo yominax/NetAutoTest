@@ -1,0 +1,121 @@
+# Configuration NetAutoTest
+# ==========================
+
+# Configuration du réseau simulé
+network:
+  # Type de topologie: "star", "line", "mesh"
+  topology: "star"
+  
+  # Nombre d'hôtes dans la topologie
+  hosts: 4
+  
+  # Paramètres des liens réseau (en millisecondes)
+  latency_ms: 10
+  
+  # Perte de paquets en pourcentage (0.0 - 100.0)
+  packet_loss: 0.1
+  
+  # Bande passante en Mbps (None pour illimité)
+  bandwidth_mbps: 100
+  
+  # Nom du switch principal
+  switch_name: "s1"
+
+# Configuration des tests de performance
+tests:
+  # Durée de chaque test en secondes
+  duration_seconds: 60
+  
+  # Nombre d'itérations par campagne
+  iterations: 5
+  
+  # Délai entre les itérations (secondes)
+  delay_between_iterations: 10
+  
+  # Protocoles à tester: ["tcp", "udp"]
+  protocols: ["tcp", "udp"]
+  
+  # Ports de test
+  ports:
+    tcp: 5001
+    udp: 5002
+  
+  # Seuils d'alerte
+  thresholds:
+    # Latence maximale acceptable (ms)
+    max_latency_ms: 50
+    
+    # Perte de paquets maximale acceptable (%)
+    max_packet_loss_percent: 1.0
+    
+    # Jitter maximal acceptable (ms)
+    max_jitter_ms: 5
+    
+    # Débit minimal acceptable (Mbps)
+    min_throughput_mbps: 10
+
+# Configuration du monitoring
+monitoring:
+  # Intervalle de collecte des métriques (secondes)
+  scrape_interval: 5
+  
+  # Ports des services
+  prometheus_port: 9090
+  grafana_port: 3000
+  
+  # Métriques à collecter
+  metrics:
+    - latency
+    - throughput
+    - packet_loss
+    - jitter
+    - cpu_usage
+    - memory_usage
+    - network_io
+  
+  # Alertes
+  alerts:
+    enabled: true
+    rules:
+      - name: HighLatency
+        condition: "latency > 50"
+        severity: "warning"
+      - name: HighPacketLoss
+        condition: "packet_loss > 1.0"
+        severity: "critical"
+
+# Configuration des sondes
+probes:
+  # Port d'exposition des métriques Prometheus
+  metrics_port: 8080
+  
+  # Intervalle d'envoi des messages de test (secondes)
+  test_message_interval: 1
+  
+  # Taille des messages de test (bytes)
+  test_message_size: 1024
+
+# Configuration des rapports
+reporting:
+  # Formats de sortie: ["json", "html", "csv"]
+  formats: ["json", "html"]
+  
+  # Répertoire de sortie
+  output_dir: "reports"
+  
+  # Inclure les graphiques
+  include_graphs: true
+  
+  # Style des graphiques: "matplotlib" ou "plotly"
+  graph_style: "plotly"
+
+# Configuration des logs
+logging:
+  # Niveau de log: "DEBUG", "INFO", "WARNING", "ERROR"
+  level: "INFO"
+  
+  # Format des logs: "text" ou "json"
+  format: "text"
+  
+  # Fichier de log (None pour stdout)
+  file: "logs/netautotest.log"

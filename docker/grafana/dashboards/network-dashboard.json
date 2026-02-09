@@ -1,0 +1,114 @@
+{
+  "dashboard": {
+    "title": "NetAutoTest - Dashboard Réseau",
+    "tags": ["network", "performance"],
+    "timezone": "browser",
+    "schemaVersion": 27,
+    "version": 1,
+    "refresh": "5s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Latence Réseau",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "network_latency_ms",
+            "legendFormat": "{{hostname}} -> {{target}}",
+            "refId": "A"
+          }
+        ],
+        "yaxes": [
+          {"format": "ms", "label": "Latence"},
+          {"format": "short"}
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Perte de Paquets",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0},
+        "targets": [
+          {
+            "expr": "network_packet_loss_percent",
+            "legendFormat": "{{hostname}}",
+            "refId": "A"
+          }
+        ],
+        "yaxes": [
+          {"format": "percent", "label": "Perte"},
+          {"format": "short"}
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Débit Réseau",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "network_throughput_mbps",
+            "legendFormat": "{{hostname}} - {{direction}}",
+            "refId": "A"
+          }
+        ],
+        "yaxes": [
+          {"format": "Mbps", "label": "Débit"},
+          {"format": "short"}
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Jitter",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8},
+        "targets": [
+          {
+            "expr": "network_jitter_ms",
+            "legendFormat": "{{hostname}}",
+            "refId": "A"
+          }
+        ],
+        "yaxes": [
+          {"format": "ms", "label": "Jitter"},
+          {"format": "short"}
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Utilisation CPU",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16},
+        "targets": [
+          {
+            "expr": "system_cpu_usage_percent",
+            "legendFormat": "{{hostname}}",
+            "refId": "A"
+          }
+        ],
+        "yaxes": [
+          {"format": "percent", "label": "CPU"},
+          {"format": "short"}
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Utilisation Mémoire",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 16},
+        "targets": [
+          {
+            "expr": "system_memory_usage_percent",
+            "legendFormat": "{{hostname}}",
+            "refId": "A"
+          }
+        ],
+        "yaxes": [
+          {"format": "percent", "label": "Mémoire"},
+          {"format": "short"}
+        ]
+      }
+    ]
+  }
+}

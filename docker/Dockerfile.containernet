@@ -1,0 +1,48 @@
+# Dockerfile pour Containernet
+# Image de base avec les outils réseau nécessaires
+
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Installer les dépendances système
+RUN apt-get update && apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release \
+    build-essential \
+    git \
+    iperf3 \
+    iproute2 \
+    net-tools \
+    openvswitch-switch \
+    openvswitch-common \
+    python3-dev \
+    python3-pip \
+    socat \
+    tcpdump \
+    wireless-tools \
+    && rm -rf /var/lib/apt/lists/*
+
+# Installer Containernet
+RUN pip3 install -U cffi && \
+    pip3 install -U containernet
+
+# Installer les dépendances Python du projet
+COPY requirements.txt /tmp/requirements.txt
+RUN pip3 install -r /tmp/requirements.txt && \
+    rm /tmp/requirements.txt
+
+# Créer un répertoire de travail
+WORKDIR /app
+
+# Copier le code source
+COPY . /app
+
+# Exposer les ports pour les tests
+EXPOSE 5001 5002 5003 5004 8080
+
+# Commande par défaut
+CMD ["/bin/bash"]

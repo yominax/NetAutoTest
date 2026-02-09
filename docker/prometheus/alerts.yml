@@ -1,0 +1,59 @@
+# Règles d'alerte Prometheus pour NetAutoTest
+
+groups:
+  - name: network_alerts
+    interval: 10s
+    rules:
+      - alert: HighLatency
+        expr: network_latency_ms > 50
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Latence élevée détectée"
+          description: "La latence réseau est de {{ $value }}ms (seuil: 50ms)"
+
+      - alert: HighPacketLoss
+        expr: network_packet_loss_percent > 1.0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Perte de paquets élevée"
+          description: "La perte de paquets est de {{ $value }}% (seuil: 1%)"
+
+      - alert: HighJitter
+        expr: network_jitter_ms > 5
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Jitter élevé détecté"
+          description: "Le jitter est de {{ $value }}ms (seuil: 5ms)"
+
+      - alert: LowThroughput
+        expr: network_throughput_mbps < 10
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Débit faible détecté"
+          description: "Le débit est de {{ $value }}Mbps (seuil: 10Mbps)"
+
+      - alert: HighCPUUsage
+        expr: system_cpu_usage_percent > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Utilisation CPU élevée"
+          description: "L'utilisation CPU est de {{ $value }}%"
+
+      - alert: HighMemoryUsage
+        expr: system_memory_usage_percent > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Utilisation mémoire élevée"
+          description: "L'utilisation mémoire est de {{ $value }}%"

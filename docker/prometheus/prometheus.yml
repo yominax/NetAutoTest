@@ -1,0 +1,35 @@
+# Configuration Prometheus pour NetAutoTest
+
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+  external_labels:
+    cluster: 'netautotest'
+    environment: 'test'
+
+scrape_configs:
+  # Scraper les sondes réseau sur les hôtes simulés
+  - job_name: 'network-probes'
+    static_configs:
+      - targets:
+          - 'h1:8080'
+          - 'h2:8080'
+          - 'h3:8080'
+          - 'h4:8080'
+        labels:
+          job: 'network-probe'
+          topology: 'star'
+
+  # Métriques système
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['localhost:9100']
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: []
+
+# Règles d'alerte
+rule_files:
+  - 'alerts.yml'
