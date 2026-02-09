@@ -17,7 +17,7 @@ setup(
     description="Framework DevOps d'automatisation de tests de performance réseau",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/NetAutoTest",
+    url="https://github.com/yominax/NetAutoTest",
     packages=find_packages(exclude=["tests", "tests.*"]),
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -31,8 +31,7 @@ setup(
     ],
     python_requires=">=3.11",
     install_requires=[
-        "containernet>=2.3.0",
-        "mininet>=2.3.0",
+        # containernet/mininet : pas sur PyPI, installer via make install-containernet
         "iperf3>=0.1.11",
         "scapy>=2.5.0",
         "prometheus-client>=0.19.0",
@@ -41,7 +40,7 @@ setup(
         "matplotlib>=3.7.0",
         "plotly>=5.17.0",
         "pandas>=2.0.0",
-        "pyyaml>=6.0",
+        "PyYAML>=6.0",
         "click>=8.1.0",
         "rich>=13.5.0",
         "loguru>=0.7.0",

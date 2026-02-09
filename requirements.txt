@@ -7,7 +7,7 @@
 # Testing and performance
 iperf3>=0.1.11
 scapy>=2.5.0
-fping>=0.0.1
+# fping : retiré (sur PyPI uniquement 0.0.1a1/0.0.1a2 ; non utilisé dans le code)
 
 # Monitoring
 prometheus-client>=0.19.0

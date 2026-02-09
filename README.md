@@ -1,9 +1,9 @@
 # NetAutoTest 
 
-[![CI/CD](https://github.com/yourusername/NetAutoTest/workflows/CI/badge.svg)](https://github.com/yourusername/NetAutoTest/actions)
+[![CI/CD](https://github.com/yominax/NetAutoTest/workflows/CI/badge.svg)](https://github.com/yominax/NetAutoTest/actions)
 [![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Documentation](https://img.shields.io/badge/docs-Sphinx-blue)](https://yourusername.github.io/NetAutoTest/)
+[![Documentation](https://img.shields.io/badge/docs-Sphinx-blue)](https://yominax.github.io/NetAutoTest/)
 
 **NetAutoTest** est un framework DevOps complet pour l'automatisation de tests de performance et le monitoring réseau sur un réseau local simulé.
 
@@ -197,7 +197,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Si une erreur apparaît sur un paquet, voir le [dépannage](#dépannage-rapide) ci-dessous. **Containernet et Mininet ne sont pas sur PyPI** : ils ne figurent pas dans `requirements.txt` et s’installent à l’étape 6.
+**Note :** Le fichier `requirements.txt` a été vérifié pour éviter les erreurs pip courantes : pas de `python>=3.11` (pip n’installe pas l’interpréteur), pas de `containernet`/`mininet` (pas sur PyPI), pas de `fping` (versions sur PyPI en alpha uniquement, non utilisé dans le code). Si une erreur apparaît sur un autre paquet, voir le [dépannage](#dépannage-rapide) ci-dessous. **Containernet** s’installe à l’étape 6.
 
 #### 6. Installer Containernet (simulation réseau)
 
@@ -231,6 +231,7 @@ make sim
 - **« Permission denied » / « site-packages is not writeable »** → Ne pas faire `sudo pip install`. Créer et utiliser un venv (étapes 4–5).
 - **Makefile ne marche pas** → Sous Linux, `make` est normalement disponible. Si besoin : `sudo apt-get install make`. Exécuter les commandes Python à la main (voir tableau ci‑dessus).
 - **« No matching distribution found for containernet »** → C’est normal : Containernet n’est pas sur PyPI. Ne pas l’ajouter dans `requirements.txt`. L’installer après les autres dépendances avec : `sudo make install-containernet` (ou `sudo pip3 install git+https://github.com/containernet/containernet.git` après les prérequis système).
+- **« No matching distribution found for fping>=0.0.1 »** → Sur PyPI il n’existe que les versions alpha (0.0.1a1, 0.0.1a2). Le paquet `fping` a été retiré de `requirements.txt` car il n’est pas utilisé dans le code. Mettre à jour le dépôt (`git pull`) puis relancer `pip install -r requirements.txt`.
 
 ## 📖 Utilisation rapide
 

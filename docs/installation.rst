@@ -14,7 +14,7 @@ Installation automatique
 
 .. code-block:: bash
 
-   git clone https://github.com/yourusername/NetAutoTest.git
+   git clone https://github.com/yominax/NetAutoTest.git
    cd NetAutoTest
    make install
 
