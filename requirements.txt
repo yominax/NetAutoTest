@@ -1,5 +1,5 @@
-# Core dependencies
-python>=3.11
+# Core dependencies (Python 3.11+ requis : installer via votre système, ex. sudo apt install python3.11)
+# Ne pas mettre "python>=3.11" ici : pip n'installe pas l'interpréteur Python.
 
 # Network simulation
 containernet>=2.3.0
@@ -21,7 +21,7 @@ plotly>=5.17.0
 pandas>=2.0.0
 
 # Configuration
-pyyaml>=6.0
+PyYAML>=6.0
 python-dotenv>=1.0.0
 
 # Documentation
