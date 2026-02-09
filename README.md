@@ -197,11 +197,11 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Si une erreur apparaît sur un paquet (ex. containernet), on peut l’installer plus tard avec `make install-containernet`.
+Si une erreur apparaît sur un paquet, voir le [dépannage](#dépannage-rapide) ci-dessous. **Containernet et Mininet ne sont pas sur PyPI** : ils ne figurent pas dans `requirements.txt` et s’installent à l’étape 6.
 
 #### 6. Installer Containernet (simulation réseau)
 
-Containernet nécessite des privilèges et des paquets système. À faire **après** l’étape 5 :
+**Containernet n’est pas publié sur PyPI** (d’où l’erreur « No matching distribution found for containernet »). Il s’installe depuis GitHub. Containernet nécessite des privilèges et des paquets système. À faire **après** l’étape 5 :
 
 ```bash
 sudo make install-containernet
@@ -230,6 +230,7 @@ make sim
 - **« pip: command not found »** → Utiliser `python3 -m pip` ou activer le venv puis `pip`.
 - **« Permission denied » / « site-packages is not writeable »** → Ne pas faire `sudo pip install`. Créer et utiliser un venv (étapes 4–5).
 - **Makefile ne marche pas** → Sous Linux, `make` est normalement disponible. Si besoin : `sudo apt-get install make`. Exécuter les commandes Python à la main (voir tableau ci‑dessus).
+- **« No matching distribution found for containernet »** → C’est normal : Containernet n’est pas sur PyPI. Ne pas l’ajouter dans `requirements.txt`. L’installer après les autres dépendances avec : `sudo make install-containernet` (ou `sudo pip3 install git+https://github.com/containernet/containernet.git` après les prérequis système).
 
 ## 📖 Utilisation rapide
 

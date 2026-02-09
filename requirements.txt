@@ -1,9 +1,8 @@
 # Core dependencies (Python 3.11+ requis : installer via votre système, ex. sudo apt install python3.11)
 # Ne pas mettre "python>=3.11" ici : pip n'installe pas l'interpréteur Python.
 
-# Network simulation
-containernet>=2.3.0
-mininet>=2.3.0
+# Network simulation (Containernet/Mininet : pas sur PyPI, installés séparément)
+# Installer avec : make install-containernet  (ou pip install git+https://github.com/containernet/containernet.git)
 
 # Testing and performance
 iperf3>=0.1.11

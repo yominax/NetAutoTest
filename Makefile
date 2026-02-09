@@ -44,7 +44,7 @@ install-containernet:
 		tcpdump \
 		wireless-tools
 	sudo pip3 install -U cffi
-	sudo pip3 install -U containernet
+	sudo pip3 install -U git+https://github.com/containernet/containernet.git
 	@echo "✅ Containernet installé"
 
 test:
