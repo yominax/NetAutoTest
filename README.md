@@ -7,6 +7,8 @@
 
 **NetAutoTest** est un framework DevOps complet pour l'automatisation de tests de performance et le monitoring réseau sur un réseau local simulé.
 
+> **Tu débutes ou tu veux tout comprendre ?** → Lis **[GUIDE_COMPLET.md](GUIDE_COMPLET.md)** : explication de tout le projet et comment run (simulation, tests, monitoring) pas à pas.
+
 ##  Table des matières
 
 - [Vue d'ensemble](#vue-densemble)
